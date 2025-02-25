@@ -1,0 +1,91 @@
+html {
+  height: 100vh;
+}
+.style-create-input {
+  display: flex;
+  width: 250px;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+#addShapeInContainer {
+  display: flex;
+}
+#createContainers {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+#containers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#containersSection {
+  display: flex;
+  flex-direction: column;
+  height: 75vh;
+  width: 100%;
+  border: 1px solid black;
+}
+.div-style {
+  height: 500px;
+  width: 45%;
+  margin: 2%;
+  border: 1px solid black;
+  padding: 10px;
+}
+.pagination {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+}
+
+.shapeContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.square {
+  display: inline-block;
+  width: 60px;
+  max-width: 100%;
+  height: 60px;
+  max-height: 100%;
+  background-color: #1d3c6b;
+  margin: 5px;
+}
+.diamond {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background-color: #1d3c6b;
+  transform: rotate(45deg);
+  margin: 5px;
+}
+.rectangle {
+  display: inline-block;
+  width: 100px;
+  height: 60px;
+  background-color: #1d3c6b;
+  margin: 5px;
+}
+.circle {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background-color: #1d3c6b;
+  border-radius: 50%;
+  margin: 5px;
+}
+.triangle {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 60px solid #1d3c6b;
+  margin: 5px;
+}

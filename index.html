@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="createContainers">
+      <div class="style-create-input">
+        <label for="createDiv">Create Empty Container :</label>
+        <input
+          type="button"
+          id="createDiv"
+          value="+"
+          style="width: 50px; padding: 0px 5px"
+        />
+      </div>
+      <div id="addShapeInContainer">
+        <label for="selectCont">Add Shape in Container: </label>
+        <select name="containers" id="selectCont" style="margin-left: 20px">
+          <option value="container" class="value" id="c123">
+            container1,2,3...
+          </option>
+        </select>
+      </div>
+      <div id="selectShape"></div>
+    </div>
+    <div id="containersSection">
+      <div id="containers"></div>
+    </div>
+    <div class="pagination" id="pagination">
+      <a href="#" id="prev">Previous</a>
+      <a href="#" class="page-link" data-page="1">1</a>
+      <a href="#" id="next">Next</a>
+      <p id="page-numbers"></p>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
