@@ -1,4 +1,4 @@
-const shapes = ["square", "diamond", "rectangle", "cricle", "triangle"];
+const shapes = ["square", "diamond", "rectangle", "circle", "triangle"];
 
 const createDivEl = document.getElementById("createDiv");
 const containers = document.getElementById("containers");
@@ -37,94 +37,75 @@ createDivEl.addEventListener("click", () => {
   option.setAttribute("value", `Container${containerCount}`);
   option.textContent = `Container ${containerCount}`;
   selectContainer.appendChild(option);
-  selectContainer.addEventListener("change", () => {
-    shapeSelector();
-  });
+
   alert("Container For Shapes Created");
 });
 
-function shapeSelector(id) {
+function shapeSelector(digit) {
   selectShapeDiv.innerHTML = "";
-  let containerId = `container${id}`;
+  let shapeContainerEl = document.getElementById(`shapeContainer${digit}`);
+  console.log(shapeContainerEl);
   const selectShapeDropDown = document.createElement("select");
-  for (let i = 0; i <= shapes.length; i++) {
+  for (let i = 0; i <= shapes.length - 1; i++) {
     let option = document.createElement("option");
     option.setAttribute("value", `${shapes[i]}`);
-    option.createTextNode = `${shapes[i]}`;
+    option.textContent = `${shapes[i]}`;
     selectShapeDropDown.appendChild(option);
   }
-  selectShapeDiv.appendChild(selectShapeDiv);
+  selectShapeDiv.appendChild(selectShapeDropDown);
+  selectShapeDropDown.addEventListener("change", (event) => {
+    let selectedShape = event.target.value;
+    event.target.value = "";
+    console.log(selectedShape);
+    let shape = document.createElement("div");
+    switch (selectedShape) {
+      case "square":
+        shape.style.width = "60px";
+        shape.style.height = "60px";
+        shape.style.backgroundColor = " #1d3c6b";
+        shape.classList.add("square");
+        shape.style.margin = "6px";
+        break;
+      case "diamond":
+        shape.style.width = "52px";
+        shape.style.height = "52px";
+        shape.style.backgroundColor = " #1d3c6b";
+        shape.style.transform = "rotate(45deg)";
+        shape.classList.add("diamond");
+        shape.style.margin = "6px";
+        break;
+      case "rectangle":
+        shape.style.width = "90px";
+        shape.style.height = "60px";
+        shape.style.backgroundColor = " #1d3c6b";
+        shape.classList.add("rectangle");
+        shape.style.margin = "6px";
+        break;
+      case "circle":
+        shape.style.width = "60px";
+        shape.style.height = "60px";
+        shape.style.borderRadius = "50%";
+        shape.style.backgroundColor = " #1d3c6b";
+        shape.classList.add("circle");
+        shape.style.margin = "6px";
+        break;
+      case "triangle":
+        shape.style.width = 0;
+        shape.style.height = 0;
+        shape.style.borderLeft = "30px solid transparent";
+        shape.style.borderRight = "30px solid transparent";
+        shape.style.borderBottom = "60px solid  #1d3c6b";
+        shape.classList.add("triangle");
+        shape.style.margin = "6px";
+        break;
+    }
+
+    shapeContainerEl.appendChild(shape);
+  });
 }
 
-// ---------------------------------Pagination
-// const cardsPerPage = 2; // Number of cards to show per page
-// const pagination = document.getElementById("pagination");
-// const prevButton = document.getElementById("prev");
-// const nextButton = document.getElementById("next");
-// const pageNumbers = document.getElementById("page-numbers");
-// const pageLinks = document.querySelectorAll(".page-link");
-
-// // const cards = Array.from(dataContainer.getElementsByClassName("card"));
-
-// // Calculate the total number of pages
-// const totalPages = Math.ceil(cards.length / cardsPerPage);
-// let currentPage = 1;
-
-// // Function to display cards for a specific page
-// function displayPage(page) {
-//   const startIndex = (page - 1) * cardsPerPage;
-//   const endIndex = startIndex + cardsPerPage;
-//   cards.forEach((card, index) => {
-//     if (index >= startIndex && index < endIndex) {
-//       card.style.display = "block";
-//     } else {
-//       card.style.display = "none";
-//     }
-//   });
-// }
-
-// // Function to update pagination buttons and page numbers
-// function updatePagination() {
-//   pageNumbers.textContent = `Page ${currentPage} of ${totalPages}`;
-//   prevButton.disabled = currentPage === 1;
-//   nextButton.disabled = currentPage === totalPages;
-//   pageLinks.forEach((link) => {
-//     const page = parseInt(link.getAttribute("data-page"));
-//     link.classList.toggle("active", page === currentPage);
-//   });
-// }
-
-// // Event listener for "Previous" button
-// prevButton.addEventListener("click", () => {
-//   if (currentPage > 1) {
-//     currentPage--;
-//     displayPage(currentPage);
-//     updatePagination();
-//   }
-// });
-
-// // Event listener for "Next" button
-// nextButton.addEventListener("click", () => {
-//   if (currentPage < totalPages) {
-//     currentPage++;
-//     displayPage(currentPage);
-//     updatePagination();
-//   }
-// });
-
-// // Event listener for page number buttons
-// pageLinks.forEach((link) => {
-//   link.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     const page = parseInt(link.getAttribute("data-page"));
-//     if (page !== currentPage) {
-//       currentPage = page;
-//       displayPage(currentPage);
-//       updatePagination();
-//     }
-//   });
-// });
-
-// // Initial page load
-// displayPage(currentPage);
-// updatePagination();
+selectContainer.addEventListener("change", (event) => {
+  let shapeContainerNumber = event.target.value.slice(-1);
+  console.log(shapeContainerNumber);
+  shapeSelector(shapeContainerNumber);
+});
